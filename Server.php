@@ -47,6 +47,18 @@ class Server extends \OAuth2\Server
         return parent::handleRevokeRequest($request, $response);
     }
 
+    public function validateAuthorizeRequest(\OAuth2\RequestInterface $request = null, \OAuth2\ResponseInterface $response = null)
+    {
+        if($request === null) {
+            $request = $this->module->getRequest();
+        }
+        if($response === null) {
+            $response = $this->module->getResponse();
+        }
+        
+        return parent::handleAuthorizeRequest($request, $response, $isAuthorized, $userId);
+    }
+
     public function handleAuthorizeRequest(\OAuth2\RequestInterface $request = null, \OAuth2\ResponseInterface $response = null, $isAuthorized = false, $userId = null)
     {
         if($request === null) {
