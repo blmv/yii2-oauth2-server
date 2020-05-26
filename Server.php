@@ -56,7 +56,7 @@ class Server extends \OAuth2\Server
             $response = $this->module->getResponse();
         }
         
-        return parent::handleAuthorizeRequest($request, $response, $isAuthorized, $userId);
+        return parent::validateAuthorizeRequest($request, $response);
     }
 
     public function handleAuthorizeRequest(\OAuth2\RequestInterface $request = null, \OAuth2\ResponseInterface $response = null, $isAuthorized = false, $userId = null)
